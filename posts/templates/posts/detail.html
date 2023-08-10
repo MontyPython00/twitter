@@ -1,55 +1,88 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div style="border: 2px solid black;">
-    <h1>Author: <a href="{% url 'posts:profile' username=post_object.user %}">{{post_object.user}}</a></h1>
-    {{post_object.description}}
-    <h3>Likes: {{post_object.like_counter}}
-        {% if user.is_authenticated %}
-        <form method="POST" style="display:inline-block;">
-            {% csrf_token %}
-            {{like_form}}
-            <input type="submit" value={% if user_like %} unlike {% else %} like {% endif %}>
-        </form>
-        {% endif %}
-    </h3>
-    </div>
-    <div style="border: 2px solid black;">
-    {% if user.is_authenticated %}
-    <form method="POST">
-        {% csrf_token %}
-        {{comment_form}}
-        <input type="submit" value="comment" style="display:inline-block;">
-    {% endif %}
-    </form>
-    </div>
-    <div style="border: 2px solid black;">
-    {% for comment in post_object.comments_to_post %}
-        <div style="border: 2px solid black;">
 
-            <p><a href="{{comment.get_absolute_url}}">User: {{comment.user}}</a>
-                {% if  comment in user_comment_owner %}
-               <button type="submit" value="{{comment.id}}" id="btn-delete">remove</button>
-                {% endif %} </p>
-            <br>
-            {{comment.text}}
-            <div id="post-remove-form-{{comment.id}}" >
-
+    <div class="post-detail">
+        <div class="post-detail-creator">
+            <div class="post-detail-creator-left">
+               <h2 class="post-detail-h2"><a href="{% url 'posts:profile' username=post_object.user %}" >Creator: {{post_object.user}}</a></h2>
+            </div>
+            <div class="post-detail-creator-right">
+                Likes: {{post_object.like_counter}}
+            </div>
+        </div>
+        <div class="post-detail-content_info-grid">
+            <div class="post-detail-content">
+                {{post_object.description}}
             </div>
 
+            <div class="post-detail-info">
+                    {% if user.is_authenticated %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{like_form}}
+                        <input class="btn-post-detail-like" type="submit" value={% if user_like %} Unlike {% else %} Like {% endif %}>
+                    </form>
+                    {% endif %}
+            </div>
         </div>
-    {% endfor %}
+
+
+        <div class="post-detail-add-comment">
+            {% if user.is_authenticated %}
+            <form method="POST" id="form-add-comment">
+                {% csrf_token %}
+                <div class="post-detail-comment_inform-grid">
+                    <div class="post-detail-inform-comment">
+                        {{comment_form}}
+                    </div>
+                    <div class="post-detail-inform-btn-comment">
+                        <input id="post-detail-comment-btn" type="submit" value="reply">
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+
+
+        <div class="post-detail-comments">
+            {% for comment in post_object.comments_to_post %}
+                <div class="post-detail-comment">
+                    <div class="post-detail-comment-owner">
+                        <div class="post-detail-comment-owner-left">
+                            <h3 class="post-detail-h3"><a href="{{comment.get_absolute_url}}">User: {{comment.user}}</a></h3>
+                        </div>
+                        <div class="post-detail-comment-owner-right">
+                            {% if  comment in user_comment_owner %}
+                           <button class="btn-delete-detail" type="submit" value="{{comment.id}}" id="btn-delete">remove</button>
+                            {% endif %}
+                       </div>
+
+                    </div>
+                    <div class="post-detail-comment-content">
+                        {{comment.text}}
+                    </div>
+
+                    <div id="post-remove-form-{{comment.id}}" >
+
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
     </div>
 
 <script>
 
-    let btnDeleteAll = document.querySelectorAll('#btn-delete')
+
+    const btnDeleteAll = document.querySelectorAll('#btn-delete')
     let hiddenInput = document.createElement('input')
     let btnConfirm = document.createElement('button')
     let createForm = document.createElement('form')
     createForm.method = 'POST'
     btnConfirm.name = 'confirm-delete'
     btnConfirm.value = 'confirm'
+    btnConfirm.className = 'btn-delete-detail'
     btnConfirm.innerText = 'confirm'
     hiddenInput.type = 'hidden'
     hiddenInput.name = 'comment_id'
@@ -65,6 +98,7 @@
             comment.appendChild(createForm)
         })
     }, btnDeleteAll)
+
 
 </script>
 {% endblock %}

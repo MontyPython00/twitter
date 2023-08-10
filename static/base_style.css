@@ -1,28 +1,43 @@
 body {
-    background-color: #3c3e3e;
-    color: #f2e4e4;
+    background-color: #313535;
+    color: #d4d4d4;
     font-family: Arial;
     align-items: center;
+    font-size: 2.4vh;
+    margin: 100px 0 0 0;
+
+
 }
 
 a {
-    color: #f2e4e4;
+    color: #d4d4d4;
     text-decoration: none;
-    transition: 250ms;
+    transition: opacity 250ms;
 }
 
 a:hover {
-    color: #f1d3d3;
+    color: #a8a8a8;
 }
 
 .navBar {
     background-color: #333333;
+    left:0;
+    right:0;
+    top:0;
     display: block;
-    height:70px;
+    height:80px;
+    -webkit-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    -moz-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    box-shadow: inset 8px 0px 56px 8px #292a2a;
+    /*Pamietaj zeby zrobic absolute i w body wrzucic top = navBar.height */
+    position:fixed;
+    z-index: 1;
+
 }
 
 .navBarList {
     list-style-type: none;
+
 
 }
 
@@ -55,3 +70,4 @@ a:hover {
 .post-preview-comments{
     border: 1px solid black;
 }
+

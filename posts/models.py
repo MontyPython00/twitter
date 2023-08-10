@@ -28,7 +28,7 @@ class PostManager(models.Manager):
 
 class Post(models.Model):
     user = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
-    description = models.CharField(max_length=300, null=True, blank=True)
+    description = models.CharField(max_length=512, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
 
@@ -48,7 +48,7 @@ class Post(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     like = models.IntegerField(default=0)
-    text = models.CharField(max_length=300)
+    text = models.CharField(max_length=1024)
     post = models.ForeignKey(Post, null=False, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
 

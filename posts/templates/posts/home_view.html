@@ -5,7 +5,7 @@
     {% for post in posts %}
     <div class="post-preview">
         <div class="post-preview-info">
-            <a href="{{post.get_absolute_url}}">Author: {{post.user}} | Created:{{post.created|date:'Y/m/d'}} | Likes: {{post.like_counter}}</a>
+            <a href="{{post.get_absolute_url}}">Creator: {{post.user}} | Created:{{post.created|date:'Y/m/d'}} | Likes: {{post.like_counter}}</a>
         </div>
         <div class="post-preview-content">
             {{post.description}}
