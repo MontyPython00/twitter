@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="border: 2px solid black;">
+    <h1>Author: <a href="{% url 'posts:profile' username=post_object.user %}">{{post_object.user}}</a></h1>
+    {{post_object.description}}
+    <h3>Likes: {{post_object.like_counter}}
+        {% if user.is_authenticated %}
+        <form method="POST" style="display:inline-block;">
+            {% csrf_token %}
+            {{like_form}}
+            <input type="submit" value={% if user_like %} unlike {% else %} like {% endif %}>
+        </form>
+        {% endif %}
+    </h3>
+    </div>
+    <div style="border: 2px solid black;">
+    {% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        {{comment_form}}
+        <input type="submit" value="comment" style="display:inline-block;">
+    {% endif %}
+    </form>
+    </div>
+    <div style="border: 2px solid black;">
+    {% for comment in post_object.comments_to_post %}
+        <div style="border: 2px solid black;">
+
+            <p><a href="{{comment.get_absolute_url}}">User: {{comment.user}}</a>
+                {% if  comment in user_comment_owner %}
+               <button type="submit" value="{{comment.id}}" id="btn-delete">remove</button>
+                {% endif %} </p>
+            <br>
+            {{comment.text}}
+            <div id="post-remove-form-{{comment.id}}" >
+
+            </div>
+
+        </div>
+    {% endfor %}
+    </div>
+
+<script>
+
+    let btnDeleteAll = document.querySelectorAll('#btn-delete')
+    let hiddenInput = document.createElement('input')
+    let btnConfirm = document.createElement('button')
+    let createForm = document.createElement('form')
+    createForm.method = 'POST'
+    btnConfirm.name = 'confirm-delete'
+    btnConfirm.value = 'confirm'
+    btnConfirm.innerText = 'confirm'
+    hiddenInput.type = 'hidden'
+    hiddenInput.name = 'comment_id'
+    createForm.innerHTML += '{% csrf_token %}'
+
+    btnDeleteAll.forEach(element => {
+        element.addEventListener('click', () => {
+            const commentId = element.getAttribute('value')
+            const comment = document.getElementById('post-remove-form-'+commentId)
+            hiddenInput.value = `${commentId}`
+            createForm.appendChild(hiddenInput)
+            createForm.appendChild(btnConfirm)
+            comment.appendChild(createForm)
+        })
+    }, btnDeleteAll)
+
+</script>
+{% endblock %}

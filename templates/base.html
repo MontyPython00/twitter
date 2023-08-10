@@ -1,0 +1,51 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'base_style.css' %}">
+
+    <title>Twitter</title>
+</head>
+<body>
+<div class="navBar">
+    <ul class="navBarList">
+        <h3>
+        <li class="navBarListElement"><a href="/">Blog </a> </h1></li>
+        <li class="navBarListElement"><a href="{% url 'accounts:login' %}">Sign In</a></li>
+        <li class="navBarListElement"><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+        <li class="navBarListElement"><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        <li class="navBarListElement"><a href="{% url 'posts:create' %}">Create</a></li>
+        {% if user.is_authenticated %} <li><a href="{% url 'posts:profile' username=request.user %}">Profile</a></li> {% endif %}
+        <li class="navBarListElement">
+            <input type="text" list="users" placeholder="username" id="user">
+                <datalist id="users">
+
+                    {% for user in users %}
+                    <option value="{{user}}"></option>
+                    {% endfor %}
+                </datalist>
+            <button type="button" id="btn-user">Go to profile</button>
+        </li>
+        </h3>
+    </ul>
+</div>
+
+<div class="main-page-posts">
+{% block content %}
+
+{% endblock %}
+</div>
+<script>
+    const btnUser = document.getElementById('btn-user')
+    let listUser = document.getElementById('user')
+    btnUser.addEventListener('click', () => {
+        if(listUser.value){
+            window.location.href = `http://127.0.0.1:8000/profile/${listUser.value}`
+        }
+    })
+</script>
+</body>
+</html>

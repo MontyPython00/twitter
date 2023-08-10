@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Profile:{{user_profile}}</h1>
+<h3>Account was created: {{user_profile.date_joined|date:"Y/m/d"}} | Posts: {{posts|length}}</h3>
+{% for post in posts %}
+<div style="border: 1px solid black; "><a href="{{post.get_absolute_url}}">{{post}} | Created:{{post.created|time:"H:i"}}</a></div>
+<div style="border: 1px solid #2e2b2b; height:80px;">
+            {{post.description}}
+        </div>
+{% endfor %}
+
+{% endblock %}
