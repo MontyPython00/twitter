@@ -5,7 +5,7 @@
     <div class="post-detail">
         <div class="post-detail-creator">
             <div class="post-detail-creator-left">
-               <h2 class="post-detail-h2"><a href="{% url 'posts:profile' username=post_object.user %}" >Creator: {{post_object.user}}</a></h2>
+              <a href="{% url 'posts:profile' username=post_object.user %}" >Creator: {{post_object.user}}</a>
             </div>
             <div class="post-detail-creator-right">
                 Likes: {{post_object.like_counter}}
@@ -50,7 +50,7 @@
                 <div class="post-detail-comment">
                     <div class="post-detail-comment-owner">
                         <div class="post-detail-comment-owner-left">
-                            <h3 class="post-detail-h3"><a href="{{comment.get_absolute_url}}">User: {{comment.user}}</a></h3>
+                            <a href="{{comment.get_absolute_url}}">User: {{comment.user}}</a>
                         </div>
                         <div class="post-detail-comment-owner-right">
                             {% if  comment in user_comment_owner %}

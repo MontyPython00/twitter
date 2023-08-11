@@ -2,10 +2,8 @@ body {
     background-color: #313535;
     color: #d4d4d4;
     font-family: Arial;
-    align-items: center;
-    font-size: 2.4vh;
+    font-size: 1.5em;
     margin: 100px 0 0 0;
-
 
 }
 
@@ -20,54 +18,55 @@ a:hover {
 }
 
 .navBar {
+    display: flex;
+    flex-direction:row;
+    font-size: 1.6em;
     background-color: #333333;
-    left:0;
-    right:0;
-    top:0;
-    display: block;
-    height:80px;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 80px;
     -webkit-box-shadow: inset 8px 0px 56px 8px #292a2a;
     -moz-box-shadow: inset 8px 0px 56px 8px #292a2a;
     box-shadow: inset 8px 0px 56px 8px #292a2a;
     /*Pamietaj zeby zrobic absolute i w body wrzucic top = navBar.height */
-    position:fixed;
+    position: fixed;
     z-index: 1;
+}
+
+.navBar-left-section{
+    flex: 1;
+    padding-top: 15px;
 
 }
 
-.navBarList {
-    list-style-type: none;
-
-
-}
-
-.navBarListElement{
-    float: left;
-    display:block;
+.navBar-middle-section{
+    width: 800px;
     text-align: center;
+    padding-top: 15px;
 }
 
+#btn-user{
+    font-size: 0.6em;
+    font-family: Arial;
 
-.post-preview {
-    display: grid;
-    grid-template-columns: 750px;
-    grid-template-rows: 40px 100px 1fr;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    justify-content: center;
 }
 
-/*tutaj dodaj jeszcze podzielone na 3 elementy pod diva do info*/
-.post-preview-info{
-    border: 1px solid black;
+#user{
+    font-size: 0.6em;
+    font-family: Arial;
+
+
 }
 
-.post-preview-content {
-    border: 1px solid black;
+.navBar-right-section {
+    flex: 1;
+    text-align: end;
+    padding-top: 15px;
 }
 
-/*pod div do komentarzy author i odpowiedz */
-.post-preview-comments{
-    border: 1px solid black;
-}
+.navBar-link{
+    padding-right:30px;
+    padding-left: 30px;
 
+}

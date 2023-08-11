@@ -1,13 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Profile:{{user_profile}}</h1>
-<h3>Account was created: {{user_profile.date_joined|date:"Y/m/d"}} | Posts: {{posts|length}}</h3>
+<div class="profile-account-owner">
+
+        <div class="profile-account-owner-user">Profile: {{user_profile}}</div>
+        <div class="profile-account-owner-date_joined">Account was created: {{user_profile.date_joined|date:"Y/m/d"}}</div>
+        <div class="profile-account-owner-post_amount">Posts: {{posts|length}}</div>
+
+</div>
 {% for post in posts %}
-<div style="border: 1px solid black; "><a href="{{post.get_absolute_url}}">{{post}} | Created:{{post.created|time:"H:i"}}</a></div>
-<div style="border: 1px solid #2e2b2b; height:80px;">
+    <div class="post-preview-grid">
+        <div class="post-preview-info-grid">
+            <div class="post-preview-info-creator">
+                <a href="{{post.get_absolute_url}}">Creator: {{post.user}} </a>
+            </div>
+            <div class="post-preview-info-created">
+                Created: {{post.created|date:'Y/m/d'}}
+            </div>
+            <div class="post-preview-info-likes">
+                Likes: {{post.like_counter}}
+            </div>
+
+        </div>
+        <div class="post-preview-content">
             {{post.description}}
         </div>
-{% endfor %}
+        {% for comment in post.comments_to_post|slice:"0:4" %}
 
+        <div class="post-preview-comments-grid">
+            <div class="post-preview-comments-owner">
+                <a href="{{comment.get_absolute_url}}">User: {{comment.user}} </a>
+            </div>
+            <div class="post-preview-comments-content">
+                {{comment.text}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
 {% endblock %}

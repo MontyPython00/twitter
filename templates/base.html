@@ -13,29 +13,35 @@
     <title>Twitter</title>
 </head>
 <body>
-<div class="navBar">
-    <ul class="navBarList">
-
-        <li class="navBarListElement"><a href="/">Blog </a> </h1></li>
-        <li class="navBarListElement"><a href="{% url 'accounts:login' %}">Sign In</a></li>
-        <li class="navBarListElement"><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
-        <li class="navBarListElement"><a href="{% url 'accounts:logout' %}">Logout</a></li>
-        <li class="navBarListElement"><a href="{% url 'posts:create' %}">Create</a></li>
-        {% if user.is_authenticated %} <li><a href="{% url 'posts:profile' username=request.user %}">Profile</a></li> {% endif %}
-        <li class="navBarListElement">
+    <div class="navBar">
+        <div class="navBar-left-section">
+            {% if user.is_authenticated %}
+                <a class="navBar-link" href="/">Blog </a>
+                <a class="navBar-link" href="{% url 'posts:create' %}">Create</a>
+            {% endif %}
+        </div>
+        <div class="navBar-middle-section">
             <input type="text" list="users" placeholder="username" id="user">
-                <datalist id="users">
 
-                    {% for user in users %}
-                    <option value="{{user}}"></option>
-                    {% endfor %}
+                <datalist id="users">
+                {% for user in users %}
+                <option value="{{user}}"></option>
+                {% endfor %}
                 </datalist>
 
             <button type="button" id="btn-user">Go to profile</button>
-        </li>
+        </div>
 
-    </ul>
-</div>
+        <div class="navBar-right-section">
+            {% if user.is_authenticated %}
+                <a class="navBar-link" href="{% url 'accounts:logout' %}">Logout</a>
+                <a class="navBar-link" href="{% url 'posts:profile' username=request.user %}">Profile</a>
+            {% else %}
+                <a class="navBar-link" href="{% url 'accounts:login' %}">Sign In</a>
+                <a class="navBar-link" href="{% url 'accounts:signup' %}">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
 
 
 {% block content %}
