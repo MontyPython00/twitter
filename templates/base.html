@@ -9,23 +9,25 @@
     <link rel="stylesheet" href="{% static 'home_view_style.css' %}">
     <link rel="stylesheet" href="{% static 'profile_style.css' %}">
     <link rel="stylesheet" href="{% static 'detail_style.css' %}">
+    <link rel="stylesheet" href="{% static 'create_style.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts_style.css' %}">
 
     <title>Twitter</title>
 </head>
 <body>
     <div class="navBar">
         <div class="navBar-left-section">
+            <a class="navBar-link" href="/">Blog </a>
             {% if user.is_authenticated %}
-                <a class="navBar-link" href="/">Blog </a>
                 <a class="navBar-link" href="{% url 'posts:create' %}">Create</a>
             {% endif %}
         </div>
         <div class="navBar-middle-section">
-            <input type="text" list="users" placeholder="username" id="user">
+            <input type="text" list="users" placeholder="username" id="input-user">
 
-                <datalist id="users">
+                <datalist class="navBar-autocomplete" id="users">
                 {% for user in users %}
-                <option value="{{user}}"></option>
+                <option class="navBar-autocomplete" value="{{user}}"></option>
                 {% endfor %}
                 </datalist>
 
@@ -50,7 +52,7 @@
 
 <script>
     const btnUser = document.getElementById('btn-user')
-    let listUser = document.getElementById('user')
+    let listUser = document.getElementById('input-user')
     btnUser.addEventListener('click', () => {
         if(listUser.value){
             window.location.href = `http://127.0.0.1:8000/profile/${listUser.value}`

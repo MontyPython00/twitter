@@ -1,0 +1,128 @@
+
+#sign_up-form-container{
+    display:grid;
+    margin-top:250px;
+    grid-template-columns: 1000px;
+    grid-template-rows: 100px 400px;
+    border-radius:50px;
+    justify-content: center;
+}
+
+.sign-user-title{
+    font-family: "Andale Mono";
+    font-size:1.5em;
+    border-radius:50px;
+    -webkit-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    -moz-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    box-shadow: inset 8px 0px 56px 8px #292a2a;
+    text-align:center;
+    padding-top:30px;
+}
+
+#user-form-register{
+    display:grid;
+    grid-template-rows: 250px 100px;
+    margin-top:20px;
+    padding: 15px 0 25px 0;
+    border-radius:50px;
+    -webkit-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    -moz-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    box-shadow: inset 8px 0px 56px 8px #292a2a;
+
+}
+
+
+
+.user-form-inputs{
+    text-align:center;
+}
+
+.sign_up_in-user-inputs{
+    font-size: 1em;
+    font-family: "Andale Mono";
+}
+
+.user-form-btn{
+    text-align:center;
+}
+
+.sign_up_in-user-btn{
+    width: 20%;
+    height:70px;
+    border-radius:35px;
+    padding: 5px 5px 5px 5px;
+    font-family: "Andale Mono";
+    font-size: 1em;
+    color: whitesmoke;
+    border-style:none;
+    cursor: pointer;
+    background-color: #01895f;
+    transition: opacity 300ms;
+}
+
+.sign_up_in-user-btn:hover{
+    background-color: #026a4a;
+}
+
+#sign_in-form-container{
+    display:grid;
+    grid-template-columns: 1000px;
+    grid-template-rows: 100px 300px;
+    justify-content: center;
+    margin-top:250px;
+}
+
+#user-form-login{
+    margin-top:20px;
+    border-radius:50px;
+    -webkit-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    -moz-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    box-shadow: inset 8px 0px 56px 8px #292a2a;
+
+}
+
+#sign_out-form-container{
+    display:grid;
+    margin-top: 250px;
+    grid-template-columns:1000px;
+    justify-content: center;
+
+}
+#sign_out-background{
+    border-radius:50px;
+    -webkit-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    -moz-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    box-shadow: inset 8px 0px 56px 8px #292a2a;
+}
+
+#sign_out-user-title{
+    font-family: "Andale Mono";
+    font-size:1.5em;
+    text-align:center;
+    padding-top:30px;
+
+}
+
+#user-form-logout{
+    margin-top: 20px;
+    text-align:center;
+}
+
+
+#sign_out-user-btn{
+    width: 20%;
+    height:70px;
+    border-radius:35px;
+    padding: 5px 5px 5px 5px;
+    font-family: "Andale Mono";
+    font-size: 1em;
+    color: whitesmoke;
+    border-style:none;
+    cursor: pointer;
+    background-color: #bc0202;
+    transition: opacity 300ms;
+}
+
+#sign_out-user-btn:hover{
+    background-color: #9c0303;
+}

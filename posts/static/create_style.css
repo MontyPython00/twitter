@@ -1,0 +1,72 @@
+#create-post-btn{
+    font-size: 0.8em;
+    /*font-family: Arial;*/
+    border-radius: 36px;
+    padding: 5px 10px 5px 10px;
+    font-family: "Andale Mono";
+    color: whitesmoke;
+    border: 2px solid;
+    cursor: pointer;
+    background-color: #4b5e84;
+    transition: opacity 300ms;
+}
+
+#create-post-btn:hover{
+    background-color: #415273;
+}
+
+#create-post{
+    display:grid;
+    grid-template-columns:1000px;
+    grid-template-rows: 100px 300px;
+    border-radius:50px;
+    justify-content: center;
+    text-align: center;
+
+}
+
+#create-post-creator{
+    text-align:center;
+    border-radius: 50px;
+    padding-top: 30px;
+    font-size: 1.5em;
+    -webkit-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    -moz-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    box-shadow: inset 8px 0px 56px 8px #292a2a;
+}
+
+#create-post-content{
+    margin-top: 20px;
+    border-radius:50px;
+    -webkit-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    -moz-box-shadow: inset 8px 0px 56px 8px #292a2a;
+    box-shadow: inset 8px 0px 56px 8px #292a2a;
+}
+
+#form-add-post{
+    display:grid;
+    grid-template-columns: 880px 120px;
+}
+
+#create-post-form-left{
+        margin: 15px 0 15px 0;
+}
+
+#create-post-form-right{
+    padding: 40px 10px 0 10px;
+}
+
+.create-post-textarea{
+    width:100%;
+    resize: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.0);
+    color:white;
+    font-size: 1em;
+    padding-top: 32px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius:50px;
+
+}
+

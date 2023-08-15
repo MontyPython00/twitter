@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    {% if not user.is_authenticated %}
-
-        <form method="POST">
+    <div id="sign_up-form-container">
+        <div class="sign-user-title">
+        Create an account!
+        </div>
+        <form method="POST" id="user-form-register">
             {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Sign Up">
+            <div class="user-form-inputs">
+                {{form.as_p}}
+            </div>
+            <div class="user-form-btn">
+                <input class="sign_up_in-user-btn" type="submit" value="Sign Up">
+            </div>
+
         </form>
-    {% else %}
-    <h3>You are already logged in as {{request.user.username}}, do you want to <a href="{% url 'accounts:logout' %}">logout</a>?</h3>
-    {% endif %}
+    </div>
+
 {% endblock %}

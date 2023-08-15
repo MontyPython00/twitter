@@ -3,7 +3,9 @@ from posts.models import Post, Comment, Like
 from django.contrib.auth import get_user
 
 class PostCreateForm(forms.ModelForm):
-    description = forms.CharField(label='Content', widget=forms.Textarea(attrs={'placeholder': 'Write here...'}))
+    description = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Write here...',
+                                                                                'class': 'create-post-textarea',
+                                                                                }))
     class Meta:
         model = Post
         fields = ['description']

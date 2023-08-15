@@ -1,13 +1,24 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
+    <div id="create-post">
 
-    <form method="POST">
-        {% csrf_token %}
-        {{form}}
-        <input type="hidden" value="{{request.user}}">
-        <input type="submit" value="create">
-    </form>
+        <div id="create-post-creator">
+            Creator:{{request.user}}
+        </div>
+        <div id="create-post-content">
+            <form method="POST" id="form-add-post">
+                {% csrf_token %}
+                <div id="create-post-form-left">
+                    {{form}}
+                </div>
+                <div id="create-post-form-right">
+                    <input id="create-post-btn" type="submit" value="create">
+                </div>
 
+                <input type="hidden" value="{{request.user}}">
+
+            </form>
+        </div>
+    </div>
 {% endblock %}

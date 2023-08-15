@@ -49,14 +49,32 @@ a:hover {
 #btn-user{
     font-size: 0.6em;
     font-family: Arial;
-
+    border-radius: 36px;
+    padding: 5px 10px 5px 10px;
+    /*font-family: "Andale Mono";*/
+    color: whitesmoke;
+    border: 2px solid;
+    cursor: pointer;
+    background-color: #4b5e84;
+    transition: opacity 300ms;
 }
 
-#user{
+#btn-user:hover{
+    background-color: #425374;
+}
+
+#input-user {
     font-size: 0.6em;
     font-family: Arial;
+    background-color: #313535;
+    border: 2px solid;
+    border-radius:10px;
+    color: white;
+    padding: 5px 0 5px 10px;
+}
 
-
+#input-user:focus{
+    border-style: none;
 }
 
 .navBar-right-section {
