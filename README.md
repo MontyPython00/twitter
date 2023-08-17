@@ -1,5 +1,4 @@
 # twitter
-
 Twitter clone with functionalities: <br>
 &nbsp; -Likes <br>
 &nbsp; -Post <br>
