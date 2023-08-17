@@ -5,7 +5,7 @@ Twitter clone with functionalities: <br>
 &nbsp; -Post <br>
 &nbsp; -Comment <br>
 &nbsp; -Accounts <br>
-&nbsp; -bar search with autocomplete <br>
+&nbsp; -bar search with suggestions <br>
 
 Created with: <br>
 &nbsp; -Django <br>
