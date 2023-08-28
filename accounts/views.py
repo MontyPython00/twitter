@@ -14,14 +14,13 @@ def login_view(request):
     if form.is_valid():
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
-        print(username, password)
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect('posts:home_page')
         else:
-            print('failed.')
+            print('failed.') # Popraw to!!!!
 
     return render(request, 'accounts/login.html', context=context)
 

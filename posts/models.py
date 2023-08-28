@@ -4,7 +4,6 @@ from django.urls import reverse
 from django.db.models import Q
 
 
-# Create your models here.  PAMIETAJ O TESTACH ZEBY NA KONCU ZROBIC
 
 User = settings.AUTH_USER_MODEL
 
@@ -28,11 +27,13 @@ class PostManager(models.Manager):
 
 class Post(models.Model):
     user = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
-    description = models.CharField(max_length=512, null=True, blank=True)
+    description = models.CharField(max_length=512, null=False, blank=False)
     created = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
 
     objects = PostManager()
+
+    
 
     def like_counter(self):
         return Like.objects.filter(post=self.id).count()
