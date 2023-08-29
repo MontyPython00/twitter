@@ -9,7 +9,6 @@ pytestmark = pytest.mark.django_db
 
 url_path = reverse('posts:create')
 
-
 def test_create_post_success():
     user = User.objects.create_user(username='test', password='test')
     post_object = Post.objects.create(user=user,  description='test')
@@ -36,5 +35,3 @@ def test_like_post_success():
     assert Like.objects.filter(post=post_object).count() == 2
     assert Like.objects.get(post=post_object, user=user).user.username == 'test'
     assert Like.objects.filter(post=post_object, user=user2).exists() == True
-
-

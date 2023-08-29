@@ -18,7 +18,7 @@ def test_create_account_client_success(client):
         "password1": "myPassword123",
         "password2": "myPassword123"
     })
-    assert response.status_code == 302
+    assert response.status_code == 302 #code 302 moves to another location in that case is home page - valid data
     assert User.objects.all().count() == 1
     assert User.objects.get(pk=1).username == 'test123123'
 
@@ -40,7 +40,7 @@ def test_sign_in_client_success(client):
         "username": 'test',
         "password": 'test123'
     })
-    assert response.status_code == 302 #code 302 moves to another location in that case is home page
+    assert response.status_code == 302 #code 302 moves to another location in that case is home page - valid data
 
 
 def test_sign_in_client_failed(client):
