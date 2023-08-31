@@ -5,12 +5,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block head %}
+
+
+    {% endblock %}
     <link rel="stylesheet" href="{% static 'base_style.css' %}">
-    <link rel="stylesheet" href="{% static 'home_view_style.css' %}">
-    <link rel="stylesheet" href="{% static 'profile_style.css' %}">
-    <link rel="stylesheet" href="{% static 'detail_style.css' %}">
-    <link rel="stylesheet" href="{% static 'create_style.css' %}">
-    <link rel="stylesheet" href="{% static 'accounts_style.css' %}">
+ 
 
     <title>Twitter</title>
 </head>
@@ -58,6 +58,9 @@
             window.location.href = `http://127.0.0.1:8000/profile/${listUser.value}`
         }
     })
+
+    // It's should be same method as in home_view.js
+    // this way forces to change manually in some cases - for example different port 
 </script>
 </body>
 </html>

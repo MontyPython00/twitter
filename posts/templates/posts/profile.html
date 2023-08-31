@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'home_view_style.css' %}">
+<link rel="stylesheet" href="{% static 'profile_style.css' %}">
+
+{% endblock %}
 
 {% block content %}
 <div class="profile-account-owner">

@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'accounts_style.css' %}">
+
+{% endblock %}
 
 {% block content %}
     <div id="sign_up-form-container">
